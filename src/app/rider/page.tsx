@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { riderContact } from "@/lib/epk";
 
 export const metadata: Metadata = {
   title: "Technical Rider",
@@ -41,6 +42,59 @@ export default function RiderPage() {
             </p>
           </div>
         ))}
+      </div>
+
+      <div className="mt-12 flex w-full max-w-4xl flex-col items-center">
+        <div className="w-full rounded-3xl border border-zinc-800 bg-gradient-to-b from-zinc-900 to-zinc-950 p-8 sm:p-10">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.3em] text-amber-400">
+            Tech Rider Contacts
+          </p>
+          <h2 className="mt-3 text-center text-2xl font-bold tracking-tight text-zinc-50 sm:text-3xl">
+            Production &amp; Booking
+          </h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6">
+              <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
+                Manager
+              </p>
+              <p className="mt-2 text-lg font-bold text-zinc-50">
+                {riderContact.manager}
+              </p>
+              <a
+                href={`tel:${riderContact.managerPhone.replace(/\s/g, "")}`}
+                className="mt-1 block text-amber-400 transition-colors hover:text-amber-300"
+              >
+                {riderContact.managerPhone}
+              </a>
+              <a
+                href={`mailto:${riderContact.managerEmail}`}
+                className="mt-1 block break-all text-zinc-300 transition-colors hover:text-amber-400"
+              >
+                {riderContact.managerEmail}
+              </a>
+            </div>
+            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6">
+              <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
+                Sound Engineer
+              </p>
+              <p className="mt-2 text-lg font-bold text-zinc-50">
+                {riderContact.soundEngineer}
+              </p>
+              <a
+                href={`tel:${riderContact.soundEngineerPhone.replace(/\s/g, "")}`}
+                className="mt-1 block text-amber-400 transition-colors hover:text-amber-300"
+              >
+                {riderContact.soundEngineerPhone}
+              </a>
+              <a
+                href={`mailto:${riderContact.soundEngineerEmail}`}
+                className="mt-1 block break-all text-zinc-300 transition-colors hover:text-amber-400"
+              >
+                {riderContact.soundEngineerEmail}
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -4,13 +4,19 @@ export const site = {
   role: "Sound Engineer",
   tagline:
     "Fusion rock powered by a full live production crew. Let's make it an absolute hit.",
-  manager: "Sangit Mondal",
-  managerPhone: "+91 6291640585",
-  managerEmail: "mondalsangit1995@gmail.com",
-  production: "Susmita Bhowmick",
-  productionPhone: "+91 7003238118",
-  fohEngineer: "Sangit Mondal",
-  email: "mondalsangit1995@gmail.com",
+  manager: "Susmita Bhowmick",
+  managerPhone: "+91 7003238118",
+  managerWhatsApp: "+91 7003238118",
+  managerEmail: "abirbiswaslive@gmail.com",
+} as const;
+
+export const riderContact = {
+  manager: "Susmita Bhowmick",
+  managerPhone: "+91 7003238118",
+  managerEmail: "abirbiswaslive@gmail.com",
+  soundEngineer: "Sangit Mondal",
+  soundEngineerPhone: "+91 6291640585",
+  soundEngineerEmail: "mondalsangit1995@gmail.com",
 } as const;
 
 export const band = {

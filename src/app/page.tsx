@@ -222,55 +222,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BOOKING */}
+      {/* CONTACT */}
       <section id="book" className="mx-auto w-full max-w-6xl px-4 pb-24 sm:px-6">
         <div className="rounded-3xl border border-zinc-800 bg-gradient-to-b from-zinc-900 to-zinc-950 p-8 sm:p-12">
           <SectionHeading
-            eyebrow="Booking"
+            eyebrow="Contact"
             title="Book Abir Biswas Live"
-            description="For bookings, press, and production coordination, reach out to the team directly."
+            description="For bookings, press, and management, reach out to the main manager directly."
           />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="flex flex-col justify-center rounded-2xl border border-amber-400/40 bg-zinc-900/60 p-6">
+              <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
+                Main Manager
+              </p>
+              <p className="mt-2 text-lg font-bold text-zinc-50">
+                {site.manager}
+              </p>
+              <p className="mt-1 text-sm text-amber-400">
+                Management &amp; Bookings
+              </p>
+            </div>
             <a
               href={`tel:${site.managerPhone.replace(/\s/g, "")}`}
               className="group rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition-colors hover:border-amber-400"
             >
               <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
-                Manager
+                Call
               </p>
-              <p className="mt-2 text-lg font-bold text-zinc-50">
-                {site.manager}
-              </p>
-              <p className="mt-1 text-amber-400 group-hover:text-amber-300">
+              <p className="mt-2 text-lg font-bold text-zinc-50 group-hover:text-amber-400">
                 {site.managerPhone}
               </p>
             </a>
             <a
-              href={`tel:${site.productionPhone.replace(/\s/g, "")}`}
+              href={`https://wa.me/${site.managerWhatsApp.replace(/\s/g, "").replace("+", "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition-colors hover:border-amber-400"
             >
               <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
-                Production
+                WhatsApp
               </p>
-              <p className="mt-2 text-lg font-bold text-zinc-50">
-                {site.production}
-              </p>
-              <p className="mt-1 text-amber-400 group-hover:text-amber-300">
-                {site.productionPhone}
+              <p className="mt-2 text-lg font-bold text-zinc-50 group-hover:text-amber-400">
+                {site.managerPhone}
               </p>
             </a>
             <a
               href={`mailto:${site.managerEmail}`}
-              className="group rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition-colors hover:border-amber-400 sm:col-span-2"
+              className="group rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition-colors hover:border-amber-400"
             >
               <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
                 Email
               </p>
-              <p className="mt-2 text-lg font-bold text-amber-400 group-hover:text-amber-300">
+              <p className="mt-2 break-all text-lg font-bold text-zinc-50 group-hover:text-amber-400">
                 {site.managerEmail}
-              </p>
-              <p className="mt-2 text-sm text-zinc-400">
-                F.O.H. Engineer: {site.fohEngineer} · {site.managerPhone}
               </p>
             </a>
           </div>
