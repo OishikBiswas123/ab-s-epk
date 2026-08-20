@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Technical Rider",
 };
 
-const pages = Array.from({ length: 9 }, (_, i) => `/rider/pages/page-${i + 1}.jpg`);
+const pages = Array.from({ length: 10 }, (_, i) => `/rider/pages-v2/page-${i + 1}.jpg`);
 
 export default function RiderPage() {
   return (
