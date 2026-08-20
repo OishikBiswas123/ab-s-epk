@@ -39,14 +39,25 @@ export default function Home() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
-              <div className="aspect-[3/4] overflow-hidden rounded-2xl">
-                <Image
-                  src={photos.abir[0]}
-                  alt={`${site.artist} performing live`}
-                  width={600}
-                  height={800}
-                  className="h-full w-full object-cover"
-                />
+              <div className="flex flex-col gap-4">
+                <div className="aspect-[16/10] overflow-hidden rounded-2xl">
+                  <Image
+                    src="/photos/45-IMG_5546.jpg"
+                    alt={`${site.artist} and the band performing live`}
+                    width={1200}
+                    height={750}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="aspect-[16/10] overflow-hidden rounded-2xl">
+                  <Image
+                    src="/photos/audiencgroup.jpg"
+                    alt="Audience at an Abir Biswas Live show"
+                    width={1200}
+                    height={750}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
               <div className="mt-10 flex flex-col gap-4">
                 <div className="aspect-[3/4] overflow-hidden rounded-2xl">
@@ -60,12 +71,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="absolute -bottom-6 -right-4 rounded-2xl border border-zinc-800 bg-zinc-900/90 px-6 py-4 backdrop-blur sm:-right-8">
-              <p className="text-3xl font-black text-amber-400">{photos.abir.length}</p>
-              <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
-                Live Photos
-              </p>
-            </div>
           </div>
 
           <div>
@@ -76,29 +81,53 @@ export default function Home() {
               The Artist &amp; The Band
             </h2>
             <p className="mt-6 text-base leading-8 text-zinc-300">
-              Led by <strong className="text-zinc-50">{site.artist}</strong> —
-              frontman, guitarist and front-of-house force — the band brings a
-              high-energy fusion sound backed by a dedicated production crew.
-              Every show is built on precision sound, tight performances and a
-              full live production experience.
+              <strong className="text-zinc-50">{site.artist}</strong> is a
+              dynamic singer and stage performer with 100M+ song views and 1.5M+
+              followers across social media platforms globally, with India
+              &amp; worldwide hits.
+            </p>
+            <p className="mt-4 text-base leading-8 text-zinc-300">
+              With 500+ live shows spanning public concerts, college fests,
+              corporate gigs, and private events, {site.artist} has built a
+              reputation as a powerful and versatile live performer.
+            </p>
+            <p className="mt-4 text-base leading-8 text-zinc-300">
+              His musical journey includes collaborations with leading actors,
+              directors, and major music labels, including Zee Music, Sony
+              Music, SVF Music, Eagle Music, CD Choice and many more.
             </p>
             <p className="mt-4 text-base leading-8 text-zinc-400">
-              Full bio and press assets coming soon.
+              Known for his distinctive voice, emotional delivery, and
+              electrifying stage presence, {site.artist} continues to make his
+              mark across India, Bangladesh, and the global music scene.
             </p>
-            <div className="mt-8 grid grid-cols-3 gap-4">
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {[
-                { k: "Members", v: "9" },
-                { k: "Soundcheck", v: "2 hrs" },
-                { k: "Coverage", v: "120 dB" },
+                { v: "100M+", k: "Views", img: "/photos/ab (3).jpg", alt: "Abir Biswas performing" },
+                { v: "1.5M+", k: "Followers", img: "/photos/ab (10).jpg", alt: "Abir Biswas on stage" },
+                { v: "500+", k: "Live Shows", img: "/photos/45-IMG_5546.jpg", alt: "Live show performance" },
+                { v: "India & Worldwide", k: "Hits", img: "/photos/audiencgroup.jpg", alt: "Audience at a live show" },
               ].map((s) => (
                 <div
                   key={s.k}
-                  className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5 text-center"
+                  className="group relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/60 px-5 py-6 text-center transition-colors duration-300 hover:border-amber-400/60"
                 >
-                  <p className="text-2xl font-black text-amber-400">{s.v}</p>
-                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-widest text-zinc-400">
-                    {s.k}
-                  </p>
+                  <Image
+                    src={s.img}
+                    alt={s.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    className="object-cover opacity-0 transition-all duration-700 ease-out group-hover:scale-100 group-hover:opacity-40 scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+                  <div className="relative z-10">
+                    <p className={`font-black text-amber-400 transition-colors duration-300 group-hover:text-amber-300 ${s.k === "Hits" ? "text-xl sm:text-2xl" : "text-2xl sm:text-3xl"}`}>
+                      {s.v}
+                    </p>
+                    <p className="mt-1 text-[11px] font-semibold uppercase tracking-widest text-zinc-400 transition-colors duration-300 group-hover:text-zinc-200">
+                      {s.k}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>

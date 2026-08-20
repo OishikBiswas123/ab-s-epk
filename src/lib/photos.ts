@@ -68,4 +68,18 @@ export const photos = {
   ],
 } as const;
 
+export const riderPhotos = {
+  coverBanner: "/rider/cover-banner.jpg",
+  coverLogo: "/rider/cover-logo.jpg",
+  paWide: "/rider/pa-wide.jpg",
+  paTall: "/rider/pa-tall.jpg",
+  monitoring: "/rider/monitoring.jpg",
+  console: "/rider/console.jpg",
+  equipment: "/rider/equipment.jpg",
+  patchlist: "/rider/patchlist.jpg",
+  terms: "/rider/terms.jpg",
+  contact: "/rider/contact.jpg",
+  contactBanner: "/rider/contact-banner.jpg",
+} as const;
+
 export type PhotoCategory = keyof typeof photos;
