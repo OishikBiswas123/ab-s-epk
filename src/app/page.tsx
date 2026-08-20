@@ -36,38 +36,69 @@ export default function Home() {
 
       {/* ABOUT */}
       <section id="about" className="mx-auto w-full max-w-6xl px-4 py-24 sm:px-6">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="relative">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="flex flex-col gap-4">
-                <div className="aspect-[16/10] overflow-hidden rounded-2xl">
+        <div className="grid items-start gap-12 lg:grid-cols-2">
+          <div className="relative fade-up">
+            <div className="grid grid-cols-2 gap-4 sm:gap-5">
+              <div className="flex flex-col gap-4 sm:gap-5">
+                <div className="group relative min-h-0 flex-1 overflow-hidden rounded-2xl">
                   <Image
                     src="/photos/45-IMG_5546.jpg"
                     alt={`${site.artist} and the band performing live`}
-                    width={1200}
-                    height={750}
-                    className="h-full w-full object-cover"
+                    fill
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute inset-x-0 bottom-3 z-10 px-4 text-center opacity-0 transition-all duration-500 group-hover:opacity-100">
+                    <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-400">
+                      {site.artist} &amp; The Band
+                    </p>
+                  </div>
                 </div>
-                <div className="aspect-[16/10] overflow-hidden rounded-2xl">
+                <div className="group relative min-h-0 flex-1 overflow-hidden rounded-2xl">
                   <Image
                     src="/photos/audiencgroup.jpg"
                     alt="Audience at an Abir Biswas Live show"
-                    width={1200}
-                    height={750}
-                    className="h-full w-full object-cover"
+                    fill
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute inset-x-0 bottom-3 z-10 px-4 text-center opacity-0 transition-all duration-500 group-hover:opacity-100">
+                    <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-400">
+                      The Crowd
+                    </p>
+                  </div>
+                </div>
+                <div className="group relative min-h-0 flex-1 overflow-hidden rounded-2xl">
+                  <Image
+                    src="/photos/46-IMG_5547.jpg"
+                    alt={`${site.artist} and the band performing live`}
+                    fill
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute inset-x-0 bottom-3 z-10 px-4 text-center opacity-0 transition-all duration-500 group-hover:opacity-100">
+                    <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-400">
+                      On Stage
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="mt-10 flex flex-col gap-4">
-                <div className="aspect-[3/4] overflow-hidden rounded-2xl">
-                  <Image
-                    src={photos.abir[3]}
-                    alt={`${site.artist} on stage`}
-                    width={600}
-                    height={800}
-                    className="h-full w-full object-cover"
-                  />
+              <div className="group relative min-h-[280px] overflow-hidden rounded-2xl sm:min-h-[480px]">
+                <Image
+                  src={photos.abir[3]}
+                  alt={`${site.artist} on stage`}
+                  fill
+                  sizes="(max-width: 640px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-x-0 bottom-4 z-10 px-4 text-center opacity-0 transition-all duration-500 group-hover:opacity-100">
+                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-400">
+                    {site.artist}
+                  </p>
                 </div>
               </div>
             </div>
@@ -101,7 +132,9 @@ export default function Home() {
               electrifying stage presence, {site.artist} continues to make his
               mark across India, Bangladesh, and the global music scene.
             </p>
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          </div>
+        </div>
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 { v: "100M+", k: "Views", img: "/photos/ab (3).jpg", alt: "Abir Biswas performing" },
                 { v: "1.5M+", k: "Followers", img: "/photos/ab (10).jpg", alt: "Abir Biswas on stage" },
@@ -131,8 +164,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
       </section>
 
       {/* ABIR GALLERY */}
