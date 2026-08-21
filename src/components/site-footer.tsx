@@ -55,7 +55,15 @@ export default function SiteFooter() {
         </nav>
       </div>
       <div className="border-t border-zinc-800/60 py-4 text-center text-xs text-zinc-500">
-        © {new Date().getFullYear()} {site.artistFull}. All rights reserved.
+        © {new Date().getFullYear()} {site.artistFull}. All rights reserved. <span className="ml-1 text-zinc-500">Crafted by</span>{" "}
+          <a
+            href="https://oishikbiswas.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-zinc-400 transition-colors hover:text-amber-400"
+          >
+            Oishik Biswas
+          </a>
       </div>
     </footer>
   );
