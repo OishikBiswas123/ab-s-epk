@@ -50,7 +50,7 @@ export default function Hero() {
           </span>
         </h1>
         <p className="mt-6 text-sm font-semibold uppercase tracking-[0.4em] text-zinc-300">
-          {site.role} &amp; The Band
+          The Artist &amp; The Band
         </p>
         <p className="mt-6 max-w-xl text-lg leading-8 text-zinc-200">
           {site.tagline}
