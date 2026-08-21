@@ -28,7 +28,7 @@ export default function SiteHeader() {
             ABIR BISWAS
           </span>
           <span className="text-[10px] uppercase tracking-[0.3em] text-zinc-400">
-            Live · Electronic Press Kit
+            Live
           </span>
         </Link>
 
