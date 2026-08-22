@@ -22,6 +22,7 @@ export default function PhotoGallery({
   subtitle: string;
 }) {
   const [active, setActive] = useState<number | null>(null);
+  const [menuIndex, setMenuIndex] = useState<number | null>(null);
 
   const close = useCallback(() => setActive(null), []);
   const next = useCallback(
@@ -35,6 +36,35 @@ export default function PhotoGallery({
       ),
     [photos.length]
   );
+
+  const handlePhotoClick = useCallback(
+    (i: number) => {
+      if (menuIndex === i) {
+        setMenuIndex(null);
+      } else {
+        setMenuIndex(i);
+      }
+    },
+    [menuIndex]
+  );
+
+  const downloadPhoto = useCallback(async (src: string) => {
+    try {
+      const res = await fetch(src);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = src.split("/").pop() || "photo.jpg";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch {
+      window.open(src, "_blank");
+    }
+    setMenuIndex(null);
+  }, []);
 
   useEffect(() => {
     if (active === null) return;
@@ -50,6 +80,13 @@ export default function PhotoGallery({
       document.body.style.overflow = "";
     };
   }, [active, close, next, prev]);
+
+  useEffect(() => {
+    if (menuIndex === null) return;
+    const handleMouseDown = () => setMenuIndex(null);
+    window.addEventListener("mousedown", handleMouseDown);
+    return () => window.removeEventListener("mousedown", handleMouseDown);
+  }, [menuIndex]);
 
   return (
     <div>
@@ -70,27 +107,58 @@ export default function PhotoGallery({
 
       <div className="mt-8 columns-2 gap-4 md:columns-3 lg:columns-4 [column-fill:_balance]">
         {photos.map((src, i) => (
-          <button
-            key={src}
-            type="button"
-            onClick={() => setActive(i)}
-            className="group relative mb-4 block w-full overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
-          >
-            <div className={`w-full ${aspects[i % aspects.length]}`}>
-              <Image
-                src={src}
-                alt={`${title} photo ${i + 1}`}
-                fill
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-            <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 via-transparent to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <span className="text-xs font-semibold uppercase tracking-widest text-amber-400">
-                {title}
-              </span>
-            </div>
-          </button>
+          <div key={src} className="relative mb-4">
+            <button
+              type="button"
+              onClick={() => handlePhotoClick(i)}
+              className="group relative block w-full overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+            >
+              <div className={`w-full ${aspects[i % aspects.length]}`}>
+                <Image
+                  src={src}
+                  alt={`${title} photo ${i + 1}`}
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/70 via-transparent to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span className="text-xs font-semibold uppercase tracking-widest text-amber-400">
+                  {title}
+                </span>
+              </div>
+            </button>
+
+            {menuIndex === i && (
+              <div className="absolute inset-0 z-10 flex items-center justify-center rounded-2xl bg-black/80 backdrop-blur-sm">
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    onMouseDown={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActive(i);
+                      setMenuIndex(null);
+                    }}
+                    className="rounded-full border border-zinc-600 bg-zinc-900/90 px-5 py-2.5 text-sm font-semibold text-zinc-200 transition-colors hover:border-amber-400 hover:text-amber-400"
+                  >
+                    View
+                  </button>
+                  <button
+                    type="button"
+                    onMouseDown={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      downloadPhoto(src);
+                    }}
+                    className="rounded-full bg-amber-400 px-5 py-2.5 text-sm font-bold text-zinc-950 transition-colors hover:bg-amber-300"
+                  >
+                    Download
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         ))}
       </div>
 

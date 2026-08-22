@@ -8,6 +8,9 @@ export const site = {
   managerPhone: "+91 7003238118",
   managerWhatsApp: "+91 7003238118",
   managerEmail: "abirbiswaslive@gmail.com",
+  youtube: "https://www.youtube.com/AbirBiswas",
+  facebook: "https://www.facebook.com/abirbiswasofficial",
+  instagram: "https://www.instagram.com/theabirbiswas",
 } as const;
 
 export const riderContact = {

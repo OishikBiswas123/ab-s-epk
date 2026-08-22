@@ -4,6 +4,7 @@ import Hero from "@/components/hero";
 import PhotoGallery from "@/components/photo-gallery";
 import { site } from "@/lib/epk";
 import { photos } from "@/lib/photos";
+import SocialLinks from "@/components/social-links";
 
 function SectionHeading({
   eyebrow,
@@ -219,6 +220,20 @@ export default function Home() {
               </footer>
             </blockquote>
           ))}
+        </div>
+      </section>
+
+      {/* SOCIAL */}
+      <section className="mx-auto w-full max-w-6xl px-4 pb-24 sm:px-6">
+        <div className="rounded-3xl border border-zinc-800 bg-gradient-to-b from-zinc-900 to-zinc-950 p-8 sm:p-12">
+          <SectionHeading
+            eyebrow="Follow"
+            title="Stay Connected"
+            description="Follow Abir Biswas on social media for live updates, behind-the-scenes, and upcoming shows."
+          />
+          <div className="mt-10 flex justify-center">
+            <SocialLinks />
+          </div>
         </div>
       </section>
 
